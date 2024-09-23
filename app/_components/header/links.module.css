@@ -1,0 +1,30 @@
+.parent{
+    display: flex;
+    position: relative;
+    gap: 0.75rem;
+    font-size: 0.875rem /* 14px */;
+    line-height: 1.25rem /* 20px */;
+    align-items: center;
+    overflow: hidden;
+}
+@media (max-width: 770px) {
+    .parent{
+        position: absolute;
+        top: 100%;
+        gap: 1rem;
+        right: 0%;
+        padding: 1rem 0.6rem;
+        flex-direction: column;
+        background-color: #eee;
+        border-radius: 9px;
+        box-shadow: 2px 6px 8px 2px #d0d0d0;    }
+}
+
+.open{
+    width: auto;
+    padding: 1rem 0.6rem;
+}
+.close{
+    width: 0;
+    padding: 0;
+}

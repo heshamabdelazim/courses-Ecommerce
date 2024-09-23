@@ -1,0 +1,17 @@
+.parent{
+    margin: 25px 0 0 ;
+    display: grid;
+    grid-template-columns: auto auto 1fr 1fr auto auto;
+    align-items: center;
+    /* padding: 1rem; */
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media (max-width: 640px) {
+    .parent {
+        grid-template-columns: auto auto 1fr auto auto;
+    }
+}

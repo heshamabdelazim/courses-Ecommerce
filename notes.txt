@@ -1,0 +1,74 @@
+===================================
+Ready Components:
+
+in this project we will use ready component to use for CSS
+we will get these components from some websites like:
+-Preline
+-Repell
+-DaisyUi
+-hyperUi
+
+There is no big difference but, forExample the website daisyUi you need to install daisyUi@latest
+so you notice that daisyUi is a backage and Its jsx just has particular & ready classes to use
+So you can't customize anything and no your control
+
+Also, Go to hyperui and you can see inline css styles of tailwind classes so you can customize
+
+===================================
+LOGOS:
+
+To use Logos in a proper way, it should has extention (svg)
+You can choose a logo from logoipsum.com
+You go inside and choose one logo and you copy a svg 
+then go to seets and create a file => logo.svg then paste inside the file
+then go to header file and use <Image src="/logo.svg" alt="logo" width={50} height={50} />
+
+===================================
+colors:
+
+-There is a website that provide color is called (color pallettes) it has color coordination
+-So go to the (tailwind.config.js) it has configuration of the tailwind
+-Go after backgroundImage Object and write this object to put your main color variables. It's like var(--color1) remember?
+-So after backgroundImage Object write => colors:{ primary: #234567, secondary: #00000,}
+-then return to your component you can use as global css variable , Try this class "text-primary"
+
+===================================
+Changing fonts in NEXT.JS 14
+
+- Note this, Go to layout.js file and search the word (inter). So this is the font used how to change the font?
+- In the same layout.js file there is => import {inter} from "next/font/google";  so you will write the following
+- import (Roboto} from "next/font/google";   And then go to the line => const inter = Inter({ subsets: [latin]});
+- change it and write const inter = Roboto({subsets:[latin], weight: "700" });
+
+===================================
+Account on both strapi & cloudinary & setting up
+
+-strapi is headless CMS you will npm and make a new folder and open another server to contains your data like products and others
+-cloudinary is service provider that you will use to save your media like vidoes and photos and has free 20 GB
+-You will create your products and go to cloudinary to make your free account that has 20 GB free
+-Go back to strapi and go to plugins tap and search for Cloudinary then open press (more)
+-You will find the word (npm) at your righthand side then you will find npm cloudinary....blabla----- 
+-go back to your Strapi folder you created, and open (vsCode) and open terminal then write it.
+-go back to Strapi in the browser that has plugin of Cloudinary. you will find (configuration of cloudinary) you will take that module a copy
+-Go back to your strapi folder and paste that copy in this path (config/plugins.js)
+-Go back to the browser and go to cloudinary that you made the account earlier and get 3 things (cloud name , cloudinary key , cloudinary sercret)
+-Go back to Strapi folder and go to .env file. You will find many lines like HOST=  PORT=
+-You will add like what you paste in the plugins file. YOu will add CLOUDINARY_NAME=  CLOUDINARY_KEY=  CLOUDINARY_SECRET=    and paste in every line 
+-Go back to the browser to get (Security Middleware) and put it inside this path (config/middlewares.js)
+put it in the line that has (strapi::security) and replace it.
+-Now, Congratualtions You can upload on Strapi how?
+-Go to the browser that has your strapi and your page, go to media library then try to upload anything. Then drag it to search bar you will see its path came from cloudinary GOOOOD.
+
+=====================================
+Using API in our main project folder
+
+-You will create a file in the root path called => .env.local
+-You will write this in the first line inside =>  NEXT_PUBLIC_API_KEY=  0000(paste here your key you got from api-tocken on strapi
+-Note: I must write NEXT_PUBLIC before any key I use
+-install axios => npm i axios
+-You will make _utils folder || axios instance of mine
+-You will make 2 files (axiosClient.jsx + productAPIs.jsx)
+-in axiosClient.jsx you will make 3 consts => (const apiKey + const apiURL + const axiosClient) then export default axiosClient
+-Go to the second file => productAPIs.jsx and you will make many APIs here. forExample: You will write const getProducts = ()=> axiosClient.get("/product")
+
+
