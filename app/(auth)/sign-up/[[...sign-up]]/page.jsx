@@ -1,5 +1,5 @@
 // import React from 'react'
-import Signning from "../../../_components/signning";
+import Signning from "../../_components/Signning";
 
 function page() {
   return <Signning button="signing up" />;

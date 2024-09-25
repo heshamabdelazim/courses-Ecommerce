@@ -1,10 +1,10 @@
 // import React from 'react'
-import Signning from "../../../_components/signning"
+import Signning from "../../_components/Signning"
 
 function Page() {
   return (
     <>
-     <Signning button="logging" />
+     <Signning />
     </>
   )
 }

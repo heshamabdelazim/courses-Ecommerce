@@ -5,7 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 export default function Signning({ button = "logging" }) {
-  const Logo = dynamic(() => import("./header/Logo"), {
+  const Logo = dynamic(() => import("../../_components/header/Logo"), {
     ssr: false,
   });
 
@@ -34,7 +34,15 @@ export default function Signning({ button = "logging" }) {
             </p>
 
             <div className="w-fit mx-auto mt-4">
-              {button == "logging" ? <SignIn /> : <SignUp />}
+              {button == "logging" ? (
+                <>
+                  <SignIn />
+                </>
+              ) : (
+                <>
+                  <SignUp />
+                </>
+              )}
             </div>
           </div>
         </main>

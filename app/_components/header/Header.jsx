@@ -69,15 +69,15 @@ function Header() {
 
           <div className="flex items-center gap-3 md:gap-4">
             {!user ? (
-              <div className="sm:flex sm:gap-4">
+              <div className="flex gap-2 sm:gap-4">
                 <Link
-                  className="block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-500"
+                  className="block rounded-md bg-primary text-center px-2 sm:px-5 py-2.5 text-[13px] font-medium text-white transition hover:bg-teal-500"
                   href="/sign-up"
                 >
                   Sign Up
                 </Link>
                 <Link
-                  className="block rounded-md bg-secondary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-500"
+                  className="block rounded-md bg-secondary text-center px-2 sm:px-5 py-2.5 text-[13px] sm:text-sm font-medium text-white transition hover:bg-teal-500"
                   href="/sign-in"
                 >
                   Sign In
