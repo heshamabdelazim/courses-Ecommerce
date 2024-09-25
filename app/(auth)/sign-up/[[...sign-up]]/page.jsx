@@ -1,5 +1,8 @@
-import { SignUp } from "@clerk/nextjs";
+// import React from 'react'
+import Signning from "../../../_components/signning";
 
-export default function Page() {
-  return <SignUp />;
+function page() {
+  return <Signning button="signing up" />;
 }
+
+export default page;

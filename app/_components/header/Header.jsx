@@ -72,9 +72,15 @@ function Header() {
               <div className="sm:flex sm:gap-4">
                 <Link
                   className="block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-500"
+                  href="/sign-up"
+                >
+                  Sign Up
+                </Link>
+                <Link
+                  className="block rounded-md bg-secondary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-500"
                   href="/sign-in"
                 >
-                  Login
+                  Sign In
                 </Link>
               </div>
             ) : (
