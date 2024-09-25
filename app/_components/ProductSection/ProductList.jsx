@@ -40,9 +40,14 @@ function ProductList({ products }) {
               </div>
             </Link>
           ))
-        : ["1", "2", "3"].map((obj) => <ImageAnimation key={obj.id} />)}
+        : [1, 2, 3].map((obj) => <ImageAnimation key={obj.id} />)}
     </div>
   );
 }
 
 export default ProductList;
+
+/*
+<ImageAnimation key={obj.id} />
+<h3 key={obj.id}>TEST TEST</h3>
+*/

@@ -15,6 +15,7 @@ function Banner({ product }) {
         />
       ) : (
         <ImageAnimation />
+        // <h1>beso beso</h1>
       )}
     </div>
   );

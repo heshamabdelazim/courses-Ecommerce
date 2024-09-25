@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 function Product({ params }) {
   // Hoocks
   let [product, setProduct] = useState();
-  let [similarProducts, setSimilarProducts] = useState([]);
+  let [similarProducts, setSimilarProducts] = useState();
 
   useEffect(() => {
     gettingAProduct_();

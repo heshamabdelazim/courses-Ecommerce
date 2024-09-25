@@ -58,7 +58,7 @@ function Details({ product }) {
   };
 
   return (
-    <div className="text-center md:text-start mx-auto">
+    <div className="text-center md:text-start mx-auto md:mx-0">
       {/*I wrote mx-auto for animation of loading*/}
       {product ? (
         <>
