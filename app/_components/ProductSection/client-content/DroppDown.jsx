@@ -1,19 +1,19 @@
 "useClient";
 
-import { useContext, useEffect } from "react";
-import { CartContext } from "../../_context/CartContext";
+import { updateCategory } from "../../../_RTK/slices/Category";
+import { useDispatch } from "react-redux";
 
 function DropDown({ list }) {
-  const { category, setCategory } = useContext(CartContext);
-  useEffect(() => {
-    // why this just every drop down we will use will get all products
-    setCategory("all");
-  }, []);
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   // why this just every drop down we will use will get all products
+  //   setCategory("all");
+  // }, []);
 
   console.log(list, "this is liset");
 
   const upDateCoursesCategory = (e) => {
-    setCategory(e.target.value); //updating useContext
+    dispatch(updateCategory(e.target.value)); //updating useContext
   };
 
   return (

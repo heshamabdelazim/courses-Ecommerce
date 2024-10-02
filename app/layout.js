@@ -1,19 +1,13 @@
-"use client";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/header/Header";
 import Footer from "./_components/Footer";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs";
-import { useEffect, useState } from "react";
-import { CartContext } from "./_context/CartContext";
+import { ClerkProvider } from "@clerk/nextjs";
 
-const inter = Roboto({ subsets: ["latin"], weight: "900" });
+import { myStore } from "./_RTK/store";
+import ReduxProvider from "./_RTK/ReduxProvider";
+
+const roboto = Roboto({ subsets: ["latin"], weight: "900" });
 
 // export const metadata = {
 //   title: "E-Commerce Courses",
@@ -22,20 +16,19 @@ const inter = Roboto({ subsets: ["latin"], weight: "900" });
 // ----- commented to make "use client"
 
 export default function RootLayout({ children }) {
-  let [cart, setCart] = useState([]);
-  let [category, setCategory] = useState("all");
-
   return (
     <ClerkProvider>
-      <CartContext.Provider value={{ cart, setCart, category, setCategory }}>
+      {/* <Provider store={myStore}> */}
+      <ReduxProvider>
+        {/* I create this component to wrap in the server layout because redux only work in client side */}
         <html lang="en">
-          <body className={inter.className}>
+          <body className={roboto.className}>
             <Header />
             {children}
             <Footer />
           </body>
         </html>
-      </CartContext.Provider>
+      </ReduxProvider>
     </ClerkProvider>
   );
 }

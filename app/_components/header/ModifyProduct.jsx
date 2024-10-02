@@ -1,14 +1,13 @@
 "use client";
-import React, { useContext } from "react";
-import { CartContext } from "../../_context/CartContext";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import EmptyCart from "../EmptyCart";
+import { useSelector } from "react-redux";
 
 function ModifyProduct() {
-  const { cart, setCart } = useContext(CartContext);
   const router = useRouter();
-
+  const cart = useSelector((data) => data.cart);
+  console.log(cart);
   return (
     <div className="cart absolute top-[100%] left-[10%] right-[10%]  md:left-[60%] flex flex-col justify-between md:min-h-[10rem] md:w-[250px] lg:w-[350px] p-4 bg-gray-300">
       {cart.length > 0 ? (
@@ -17,20 +16,20 @@ function ModifyProduct() {
             <li key={ele.id} className="flex gap-6 min-w-[170px] ">
               <div className="cart relative hidden lg:block  md:w-[110px] md:h-[90px]">
                 <Image
-                  src={ele?.product.banner[0].url}
+                  src={ele?.dataCame.banner[0].url}
                   className="rounded"
                   fill
                 />
               </div>
               <div className="cart flex-[2] flex flex-col justify-around ">
                 <h4 className="text-base md:text-lg line-clamp-1 ">
-                  {ele?.product.title}
+                  {ele?.dataCame.title}
                 </h4>
                 <p className="text-[12px] text-gray-800">
-                  {ele?.product.category}
+                  {ele?.dataCame.category}
                 </p>
                 <p className="text-[12px] text-gray-800">
-                  Price: {ele?.product.price} EGP
+                  Price: {ele?.dataCame.price} EGP
                 </p>
               </div>
             </li>

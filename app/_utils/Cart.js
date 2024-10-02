@@ -8,6 +8,7 @@ const getFromCart = (email) =>
   );
 
 const deleteFromCart = (id) => axiousClient.delete(`/carts/${id}`);
+
 export default {
   postToCart,
   getFromCart,

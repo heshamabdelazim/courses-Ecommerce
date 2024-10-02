@@ -3,8 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BookOpen, CircleDollarSign } from "lucide-react";
-import { useEffect, useRef } from "react";
-import ImageAnimation from "../animations/ImageAnimation";
+import ImageAnimation from "../../animations/ImageAnimation";
 
 function ProductList({ products }) {
   return (

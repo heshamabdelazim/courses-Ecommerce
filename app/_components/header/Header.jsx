@@ -4,17 +4,22 @@ import Links from "./Links";
 import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
-import { CartContext } from "../../_context/CartContext";
 import ModifyProduct from "../header/ModifyProduct";
 import Cart from "../../_utils/Cart";
 import Logo from "../header/Logo";
+import { useDispatch, useSelector } from "react-redux";
+import { addingData } from "../../_RTK/slices/Cart";
+import { reduxObjectBuilder } from "../../_RTK/reduxObjectBuilder";
 
 function Header() {
   const { user } = useUser();
-  const { cart, setCart } = useContext(CartContext);
   const [openCart, setOpenCart] = useState(false);
   const [openLinks, setOpenLinks] = useState(false);
 
+  // Redux work
+  const cartContent = useSelector((data) => data.cart);
+  const dispatch = useDispatch();
+  //
   useEffect(() => {
     document.body.addEventListener("click", (e) => handleClick(e));
     // User press anywhere else then the list close. HOW? if the compiler that clicked one doesn't has cart it will false
@@ -23,11 +28,10 @@ function Header() {
     document.body.offsetWidth > 770 && setOpenLinks(true);
     // suppose the user enter on his phone openLinks will be by default false, to see links click on the icon
     //if from laptop it will be true so you will see the links in the header
-
-    document.body.addEventListener("scroll", (e) => console.log("moving"));
   }, []);
 
   useEffect(() => {
+    //whenever sign-in this will function
     data();
   }, [user]); //Note you must write inside [user] because the function will not work why? the user authentication will take time
 
@@ -41,22 +45,22 @@ function Header() {
     if (user) {
       Cart.getFromCart(user.primaryEmailAddress.emailAddress)
         .then((res) => {
-          console.log(res.data.data);
-          res.data.data.forEach((ele) => {
-            setCart((old) => [
-              ...old,
-              {
-                id: ele.documentId,
-                product: ele.products[0],
-              },
-            ]);
-          });
+          res.data.data.map(
+            (ele) =>
+              dispatch(
+                addingData(
+                  reduxObjectBuilder(ele.id, ele.documentId, ele.products[0]) //we create a new print of an redux object to dispatch the same structure of data
+                )
+              )
+            //id_of_row_in_DB this is increasing in data base like this 1 , 2 ,3 ,4 ,5 ,6 for any queries use made
+          );
+
+          // dispatch(addingData(res.data.data.product));
         })
         .catch((err) => console.log(err, "this is damn error"));
     }
   };
 
-  console.log(cart);
   return (
     <header className="bg-white shadow-md relative test">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
@@ -96,7 +100,7 @@ function Header() {
                     className="cart flex gap-0.5 cursor-pointer"
                     onClick={() => setOpenCart((old) => !old)}
                   >
-                    <ShoppingBag />({cart?.length})
+                    <ShoppingBag />({cartContent?.length})
                   </h3>
                   {openCart && <ModifyProduct />}
                 </div>

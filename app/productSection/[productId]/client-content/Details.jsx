@@ -2,36 +2,20 @@
 import { useUser } from "@clerk/nextjs";
 import TextAnimation from "../../../_components/animations/TextAnimation";
 import { ShoppingCart } from "lucide-react";
-import React, { useContext } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import Cart from "../../../_utils/Cart";
-import { CartContext } from "../../../_context/CartContext";
-
-/*
-{ 
-  "data": {
-    "Name": "Restaurant D",
-    "Description": [ // uses the "Rich text (blocks)" field type
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "text": "A very short description goes here."
-          }
-        ]
-      }
-    ]
-  }
-}
-*/
+import { useDispatch, useSelector } from "react-redux";
+import { addingData } from "../../../_RTK/slices/Cart";
+import { reduxObjectBuilder } from "../../../_RTK/reduxObjectBuilder";
 
 function Details({ product }) {
-  const { cart, setCart } = useContext(CartContext);
-  console.log(product);
-
+  const dispatch = useDispatch();
+  const cart = useSelector((data) => data.cart);
   const router = useRouter();
   const { user } = useUser();
+  console.log(cart);
+  console.log(product);
   const authHandler = () => {
     if (user) {
       // if user authenticated it will does 2 things (update DB) + (update global state)
@@ -39,17 +23,24 @@ function Details({ product }) {
         data: {
           userName: user.fullName,
           email: user.primaryEmailAddress.emailAddress,
-          products: product.documentId,
+          products: product.data.documentId,
         },
       };
       Cart.postToCart(data)
         .then((res) => {
           //so after posting data. What next? then update useContext to re-render in the header
-          console.log(res.data.data); //this is the data went to strapi
-          setCart((old) => [
-            ...old,
-            { id: res.data.data.documentId, product: product },
-          ]);
+          console.log(res.data.data, "this data we sent"); //this is the data went to strapi
+          // reduxObjectBuilder(ele.id, ele.documentId, ele.products[0])
+          dispatch(
+            addingData(
+              reduxObjectBuilder(
+                res.data.data.id,
+                res.data.data.documentId,
+                product.data
+              )
+            )
+          ); //this code is dispatching action to save data in redux. What dataStructure?
+          // reduxObjectBuilder return an print of object
         })
         .catch((error) => console.log(error, "errorr"));
     } else {
@@ -62,10 +53,12 @@ function Details({ product }) {
       {/*I wrote mx-auto for animation of loading*/}
       {product ? (
         <>
-          <h2 className="text-2xl">{product?.title}</h2>
-          <h4 className="text-[15px] text-gray-400">{product?.category}</h4>
+          <h2 className="text-2xl">{product?.data.title}</h2>
+          <h4 className="text-[15px] text-gray-400">
+            {product?.data.category}
+          </h4>
           <p className="mt-5 sm:mt-7">
-            {product?.desciption[0].children[0].text}
+            {product?.data.desciption[0].children[0].text}
           </p>
           <span className="mt-5 inline-block text-primary text-[20px] md:text-[30px]">
             {product?.price} EGP

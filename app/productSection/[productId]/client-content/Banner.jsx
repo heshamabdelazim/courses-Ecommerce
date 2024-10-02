@@ -8,8 +8,8 @@ function Banner({ product }) {
       {product ? (
         <Image
           className="rounded-xl"
-          src={product?.banner[0].url}
-          alt="product image banner"
+          src={product?.data.banner[0].url}
+          alt="product-image"
           width={500}
           height={400}
         />
