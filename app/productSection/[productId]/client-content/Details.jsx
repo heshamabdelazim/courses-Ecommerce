@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 import Cart from "../../../_utils/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { addingData } from "../../../_RTK/slices/Cart";
-import { reduxObjectBuilder } from "../../../_RTK/reduxObjectBuilder";
+import { reduxObjectBuilder } from "../../../_utils/some-functions";
+import Swal from "sweetalert2";
 
 function Details({ product }) {
   const dispatch = useDispatch();
@@ -42,7 +43,18 @@ function Details({ product }) {
           ); //this code is dispatching action to save data in redux. What dataStructure?
           // reduxObjectBuilder return an print of object
         })
-        .catch((error) => console.log(error, "errorr"));
+        .catch((error) => console.log(error, "errorr"))
+        .finally(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Added in the cart",
+            width: 600,
+            padding: "0.6em",
+            color: "#716add",
+            background: "#fff url(/images/trees.png)",
+            position: "top-end",
+          });
+        });
     } else {
       router.push("/sign-in");
     }

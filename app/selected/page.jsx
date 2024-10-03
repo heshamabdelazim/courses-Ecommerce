@@ -8,16 +8,13 @@ import EmptyCart from "../_components/EmptyCart";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAProduct } from "../_RTK/slices/Cart";
+import { totalPrice } from "../_utils/some-functions";
 
 function Payment() {
   let dispatch = useDispatch();
   const cart = useSelector((data) => data.cart);
 
   const deleteCourse = (product) => {
-    console.log(cart, "all");
-    console.log(product, "only");
-
-    console.log(product.theProductID);
     Cart.deleteFromCart(product.theProductID)
       .then((res) => {
         console.log(res);
@@ -26,12 +23,6 @@ function Payment() {
         // setCart((old) => old.filter((ele) => ele.id !== id));
       })
       .catch((err) => console.log(err));
-  };
-
-  const totalPrice = () => {
-    let total = 0;
-    cart.map((ele) => (total = total + ele.dataCame.price));
-    return total.toFixed(2);
   };
 
   const startSwal = (courseToDelete) =>
@@ -64,22 +55,16 @@ function Payment() {
           {/* starting grid here */}
 
           <div className={`${style.parent}`}>
-            <h3 className="bg-primary flex items-center justify-center h-10 w-11 text-[14px] sm:text-lg  ">
-              No.
-            </h3>
-            <h3 className="bg-primary flex items-center justify-center h-10 w-[5rem] sm:w-[6rem] text-[14px] sm:text-lg text-center ">
+            <h3 className=" w-11 text-[14px] sm:text-lg  ">No.</h3>
+            <h3 className=" w-[5rem] sm:w-[6rem] text-[14px] sm:text-lg text-center ">
               Order ID
             </h3>
-            <h3 className="bg-primary flex items-center justify-center h-10 text-[14px] sm:text-lg text-center">
-              Course Name
-            </h3>
-            <h3 className="bg-primary  items-center justify-center h-10 hidden sm:flex sm:text-lg text-center">
+            <h3 className=" text-[14px] sm:text-lg text-center">Course Name</h3>
+            <h3 className=" hidden sm:flex sm:text-lg text-center">
               Course Image
             </h3>
-            <h3 className="bg-primary flex items-center justify-center h-10 w-[3.4rem] text-[14px] sm:text-[lg]">
-              Price
-            </h3>
-            <h3 className="bg-primary flex items-center justify-center h-10 w-[2.4rem] sm:w-[3.4rem]"></h3>
+            <h3 className=" w-[3.4rem] text-[14px] sm:text-lg">Price</h3>
+            <h3 className=" w-[2.4rem] sm:w-[3.4rem]"></h3>
 
             {/* items-center justify-center bg-blue-300 flex k */}
             {cart.map((ele, ind) => (
@@ -115,7 +100,7 @@ function Payment() {
             ))}
           </div>
           <stron className=" text-right text-lg my-6 block">
-            Total Price: {totalPrice()} EGP
+            Total Price: {totalPrice(cart)} EGP
           </stron>
         </>
       ) : (

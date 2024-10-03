@@ -10,12 +10,13 @@ like this
 import Banner from "./Banner";
 import Details from "./Details";
 import ProductList from "../../../_components/ProductSection/client-content/ProductList";
-import Breadcrumb from "../../../_components/BreadCrumb/Breadcrumb";
+import Breadcrumb from "./Breadcrumb";
 
 function Client({ chosenProduct, similar }) {
+  console.log(chosenProduct);
   return (
     <div className="mt-5 md:mt-10 px-5 md:px-10">
-      <Breadcrumb title={chosenProduct?.title} />
+      <Breadcrumb title={chosenProduct?.data.title} />
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-7 ">
         <Banner product={chosenProduct} />
         <Details product={chosenProduct} />

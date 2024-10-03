@@ -8,7 +8,13 @@
     align-items: center;
 }
 
-
+.parent h3{
+    background-color: #08d9d6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+}
 
 @media (max-width: 640px) {
     .parent {

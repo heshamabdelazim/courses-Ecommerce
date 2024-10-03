@@ -9,7 +9,7 @@ import Cart from "../../_utils/Cart";
 import Logo from "../header/Logo";
 import { useDispatch, useSelector } from "react-redux";
 import { addingData } from "../../_RTK/slices/Cart";
-import { reduxObjectBuilder } from "../../_RTK/reduxObjectBuilder";
+import { reduxObjectBuilder } from "../../_utils/some-functions";
 
 function Header() {
   const { user } = useUser();
