@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ProductApis from "../../_utils/ProductApis";
 import Client from "./client-content/Client";
 

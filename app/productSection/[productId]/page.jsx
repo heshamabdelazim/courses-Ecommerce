@@ -1,7 +1,7 @@
-// "use client";
-import Breadcrumb from "../../_components/BreadCrumb/Breadcrumb";
+import { Suspense } from "react";
 import ProductApis from "../../_utils/ProductApis";
 import Client from "./client-content/Client";
+import LoadingAProduct from "../../_components/animations/LoadingAProduct";
 
 async function Product({ params }) {
   let chosenProduct, similarProducts;
@@ -17,7 +17,11 @@ async function Product({ params }) {
   } catch (err) {
     console.log(err);
   }
-  return <Client chosenProduct={chosenProduct} similar={similarProducts} />;
+  return (
+    <Suspense fallback={<LoadingAProduct />}>
+      <Client chosenProduct={chosenProduct} similar={similarProducts} />
+    </Suspense>
+  );
 }
 
 // getting pathname then drill it as props to BreadCrumb for navigation

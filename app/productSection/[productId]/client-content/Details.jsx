@@ -63,7 +63,7 @@ function Details({ product }) {
   return (
     <div className="text-center md:text-start mx-auto md:mx-0">
       {/*I wrote mx-auto for animation of loading*/}
-      {product ? (
+      {product && (
         <>
           <h2 className="text-2xl">{product?.data.title}</h2>
           <h4 className="text-[15px] text-gray-400">
@@ -83,8 +83,6 @@ function Details({ product }) {
             Add to Cart
           </button>
         </>
-      ) : (
-        <TextAnimation />
       )}
     </div>
   );
