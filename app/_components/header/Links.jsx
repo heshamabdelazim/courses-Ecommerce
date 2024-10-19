@@ -38,7 +38,7 @@ const Links = ({ open }) => {
         <li key={linkObj.name}>
           <Link
             href={linkObj.path}
-            className="text-gray-500 line-clamp-1 transition hover:text-gray-500/75"
+            className="text-gray-500 line-clamp-1 transition hover:text-gray-500/75 font-bold"
           >
             {linkObj.name}
           </Link>

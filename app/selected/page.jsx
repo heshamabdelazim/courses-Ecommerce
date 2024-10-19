@@ -42,43 +42,47 @@ function Payment() {
       }
     });
 
-  console.log(cart);
+  //========this will be used in a className of tailwind styles (many times)
+  const contentStyle =
+    "h-32 border-b-2 border-primary border-solid font-bold flex justify-center items-center text-[12px] sm:text-base";
+  //========
+
   return (
     <div className="px-4 pt-3 min-h-[80vh]">
       {cart.length > 0 ? (
         <>
           <h2 className="text-2xl sm:text-4xl flex gap-2 justify-center items-center mt-6">
-            <GraduationCap size={46} fill="#08d9d6" />
+            <GraduationCap size={46} fill="#08d9d6" strokeWidth={1} />
             Selected Courses
           </h2>
 
           {/* starting grid here */}
 
           <div className={`${style.parent}`}>
-            <h3 className=" w-11 text-[14px] sm:text-lg  ">No.</h3>
-            <h3 className=" w-[5rem] sm:w-[6rem] text-[14px] sm:text-lg text-center ">
+            <h3 className=" w-11 text-[14px] sm:text-lg font-bold">No.</h3>
+            <h3 className=" w-[5rem] sm:w-[6rem] text-[14px] sm:text-lg text-center font-bold ">
               Order ID
             </h3>
-            <h3 className=" text-[14px] sm:text-lg text-center">Course Name</h3>
-            <h3 className=" hidden sm:flex sm:text-lg text-center">
+            <h3 className=" text-[14px] sm:text-lg text-center font-bold">
+              Course Name
+            </h3>
+            <h3 className=" hidden sm:flex sm:text-lg text-center font-bold">
               Course Image
             </h3>
-            <h3 className=" w-[3.4rem] text-[14px] sm:text-lg">Price</h3>
+            <h3 className=" w-[3.4rem] text-[14px] sm:text-lg font-bold">
+              Price
+            </h3>
             <h3 className=" w-[2.4rem] sm:w-[3.4rem]"></h3>
 
             {/* items-center justify-center bg-blue-300 flex k */}
             {cart.map((ele, ind) => (
               <>
-                <p className="h-32 border-b-2 border-primary border-solid flex justify-center items-center text-[12px] sm:text-base">
-                  {ind + 1}
-                </p>
-                <p className="h-32 border-b-2 border-primary border-solid flex justify-center items-center text-[12px] sm:text-base">
-                  {ele.id_of_row_in_DB}
-                </p>
-                <p className="h-32 border-b-2 border-primary border-solid flex justify-center items-center text-center text-[12px] sm:text-base">
+                <p className={`${contentStyle}`}>{ind + 1}</p>
+                <p className={`${contentStyle}`}>{ele.id_of_row_in_DB}</p>
+                <p className={`${contentStyle} text-center`}>
                   {ele.dataCame.title}
                 </p>
-                <div className="h-32 border-b-2 border-primary border-solid justify-center items-center hidden sm:flex">
+                <div className="h-32 border-b-2 border-primary border-solid hidden justify-center items-center  sm:flex">
                   <Image
                     src={ele?.dataCame.banner[0].url}
                     alt="course image"
@@ -87,11 +91,10 @@ function Payment() {
                     className="rounded"
                   />
                 </div>
-                <p className="h-32 border-b-2 border-primary border-solid flex justify-center items-center text-[12px] sm:text-base">
-                  {ele?.dataCame.price}
-                </p>
+                {/* <p className="h-32 border-b-2 border-primary border-solid flex justify-center items-center text-[12px] sm:text-base"> */}
+                <p className={`${contentStyle}`}>{ele?.dataCame.price}</p>
                 <p
-                  className="h-32 border-b-2 border-primary border-solid flex justify-center items-center text-[12px] sm:text-base cursor-pointer hover:text-red-400 transition"
+                  className={`${contentStyle} cursor-pointer hover:text-red-400 transition`}
                   onClick={() => startSwal(ele)}
                 >
                   <Trash />
@@ -99,9 +102,9 @@ function Payment() {
               </>
             ))}
           </div>
-          <stron className=" text-right text-lg my-6 block">
+          <strong className=" text-right text-lg my-6 block">
             Total Price: {totalPrice(cart)} EGP
-          </stron>
+          </strong>
         </>
       ) : (
         <EmptyCart />

@@ -60,12 +60,13 @@ function Details({ product }) {
     }
   };
 
+  product && console.log(product, "product333");
   return (
     <div className="text-center md:text-start mx-auto md:mx-0">
       {/*I wrote mx-auto for animation of loading*/}
       {product && (
         <>
-          <h2 className="text-2xl">{product?.data.title}</h2>
+          <h2 className="text-2xl font-bold">{product?.data.title}</h2>
           <h4 className="text-[15px] text-gray-400">
             {product?.data.category}
           </h4>
@@ -73,7 +74,7 @@ function Details({ product }) {
             {product?.data.desciption[0].children[0].text}
           </p>
           <span className="mt-5 inline-block text-primary text-[20px] md:text-[30px]">
-            {product?.price} EGP
+            {product?.data.price} EGP
           </span>
           <button
             className="flex gap-4 items-center justify-center mt-5 px-5 py-3 rounded-lg bg-primary hover:bg-teal-500 text-gray-600 font-bold w-full text-[15px] sm:text-[21px]"

@@ -19,7 +19,6 @@ function Client({ data }) {
 
   const category = useSelector((data) => data.category);
   const dispatch = useDispatch();
-  console.log(category);
 
   const coursesCategories = () => {
     // This getting all categories of courses then send it to DropDown
@@ -43,7 +42,7 @@ function Client({ data }) {
   return (
     <div id="productSection">
       <div className="flex justify-center items-center gap-2 md:gap-3 lg-gap-4 ">
-        <h2 className="py-6 sm:py-12 text-center text-2xl lg:text-4xl">
+        <h2 className="py-6 sm:py-12 text-center text-2xl lg:text-4xl font-bold">
           Courses Section
         </h2>
         <DropDown list={coursesCategories()} />

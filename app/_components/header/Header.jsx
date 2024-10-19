@@ -91,7 +91,10 @@ function Header() {
               <>
                 <div className="flex items-center gap-1 md:gap-2 ">
                   <div className="w-[75px] sm:w-auto hidden md:block">
-                    welcome {user.firstName}
+                    welcome{" "}
+                    <span className="text-secondary font-bold">
+                      {user.firstName}
+                    </span>
                   </div>
                   {<UserButton />}
                 </div>

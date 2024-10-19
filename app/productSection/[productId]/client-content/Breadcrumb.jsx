@@ -2,12 +2,14 @@ import Link from "next/link";
 import React from "react";
 
 function Breadcrumb({ title }) {
+  const textStyle = "block transition hover:text-gray-700 font-bold";
+
   return (
     <div className="m-auto w-fit my-[30px] ">
       <nav aria-label="Breadcrumb">
         <ol className="flex items-center gap-1 text-lg text-gray-600">
           <li>
-            <Link href="/" className="block transition hover:text-gray-700">
+            <Link href="/" className={textStyle}>
               Home
             </Link>
           </li>
@@ -51,7 +53,7 @@ function Breadcrumb({ title }) {
           </li>
 
           <li>
-            <a href="#" className="block transition hover:text-gray-700">
+            <a href="#" className={textStyle}>
               {title}
             </a>
           </li>
