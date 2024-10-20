@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="home">
       <Hero />
-      {/* <Popup /> */}
+      <Popup />
       <Suspense fallback={<Loading />}>
         <ProductSection />
       </Suspense>

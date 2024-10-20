@@ -3,14 +3,9 @@ import "./globals.css";
 import Header from "./_components/header/Header";
 import Footer from "./_components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
-
+import { roboto } from "./_utils/fonts";
 import { myStore } from "./_RTK/store";
 import ReduxProvider from "./_RTK/ReduxProvider";
-
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-});
 
 export const metadata = {
   title: "E-Commerce Courses",
