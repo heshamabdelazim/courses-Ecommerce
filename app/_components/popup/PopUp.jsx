@@ -30,11 +30,12 @@ function PopUp() {
       </p>
       <p className=" text-sm sm:text-lg">
         the Data might take couple of seconds to be ready because of free deploy
-        of backend. <br />I appreciate your patience. <br /> Once it is ready,
-        it will be normal to experience.
+        of backend. <br /> Once it is ready, it will be normal to experience.
+        <br />
+        maybe you will asked to refresh So, I appreciate your patience.
       </p>
       <button
-        className={`bg-secondary text-sm  sm:font-extrabold tracking-wider mt-5 rounded py-[0.2rem] px-[0.2rem] sm:py-1 sm:px-2 text-white opacity-85 hover:opacity-100 active:bg-yellow-600 hover:bg-yellow-600`}
+        className={`bg-secondary text-sm  sm:font-extrabold tracking-wider mt-2 rounded py-[0.2rem] px-[0.2rem] sm:py-1 sm:px-2 text-white opacity-85 hover:opacity-100 active:bg-yellow-600 hover:bg-yellow-600`}
         onClick={() => setShow(false)}
       >
         I understand
