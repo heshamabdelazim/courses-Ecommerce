@@ -71,4 +71,6 @@ Using API in our main project folder
 -in axiosClient.jsx you will make 3 consts => (const apiKey + const apiURL + const axiosClient) then export default axiosClient
 -Go to the second file => productAPIs.jsx and you will make many APIs here. forExample: You will write const getProducts = ()=> axiosClient.get("/product")
 
+==============================
+
 
